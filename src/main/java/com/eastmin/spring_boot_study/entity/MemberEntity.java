@@ -1,5 +1,6 @@
 package com.eastmin.spring_boot_study.entity;
 
+import com.eastmin.spring_boot_study.dto.MemberDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,4 +20,12 @@ public class MemberEntity {
 
     @Column
     private String memberName;
+
+    public static MemberEntity toMemberEntity(MemberDTO memberDTO) {
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+        memberEntity.setMemberName(memberDTO.getMemberName());
+        return memberEntity;
+    }
 }
